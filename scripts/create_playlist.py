@@ -2,9 +2,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 import os
+import sys
 
 load_dotenv()
-
 
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -19,7 +19,11 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     scope=SCOPES
 ))
 
-playlist_name = "Fantano Top 50 Singles 2024"
+if len(sys.argv) > 1:
+    playlist_name = sys.argv[1]
+else:
+    print("Nie podano nazwy playlisty.")
+    sys.exit(1)
 
 user_id = sp.current_user()["id"]
 
@@ -27,7 +31,7 @@ playlist = sp.user_playlist_create(user=user_id, name=playlist_name)
 playlist_id = playlist["id"]
 print(f"Utworzono playlistę: {playlist['external_urls']['spotify']}")
 
-file_path = "../songs_list.txt"
+file_path = "F:\Programowanie\list to spotify playlist\songs_list.txt"
 
 with open(file_path, "r", encoding="utf-8") as file:
     for line in file:
