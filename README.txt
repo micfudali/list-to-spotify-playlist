@@ -21,3 +21,6 @@ Przykładowa playlista Spotify:
 BROCKHAMPTON - "GOLD"
 Marvin Gaye - "What's Going On"
 Kendrick Lamar - "heart pt. 6"
+
+Link do repozytorium na Githubie:
+https://github.com/micfudali/list-to-spotify-playlist
